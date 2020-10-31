@@ -1,7 +1,5 @@
 package ua.yaroslav.student.hostel.dao.entity;
 
-import java.time.LocalDateTime;
-
 public class Student {
     private int id;
     private String firstName;
@@ -55,10 +53,5 @@ public class Student {
     }
 
     public void setBirthday(String birthday) { this.birthday = birthday; }
-
-    public LocalDateTime getLocalDateTime(){
-        LocalDateTime localDateTime = LocalDateTime.parse(birthday);
-        return localDateTime;
-    }
 
 }

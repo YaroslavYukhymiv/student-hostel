@@ -26,13 +26,10 @@ public class HostelController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute("hos") Student student){
+        if(student.getBirthday().equals("")){
+            student.setBirthday("null");
+        }
         dao.save(student);
-        return "redirect:view";
-    }
-
-    @RequestMapping(value = "/savedate", method = RequestMethod.POST)
-    public String saveDate(@ModelAttribute ("hos") Student student){
-        dao.saveDate(student);
         return "redirect:view";
     }
 

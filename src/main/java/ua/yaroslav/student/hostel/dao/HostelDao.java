@@ -19,15 +19,10 @@ public class HostelDao {
 
 
     public int save(Student h) {
-        String sql = "INSERT INTO HostelData(firstName, secondName, roomNumber, faculty) " +
-                "VALUES ('"+h.getFirstName()+"', '"+h.getSecondName()+"', '"+h.getRoomNumber()+"', '"+h.getFaculty()+"')";
+        String sql = "INSERT INTO HostelData(firstName, secondName, roomNumber, faculty, birthday) " +
+                "VALUES ('"+h.getFirstName()+"', '"+h.getSecondName()+"', '"+h.getRoomNumber()+"', '"+h.getFaculty()+"', '"+h.getBirthday()+"')";
         return template.update(sql);
     }
-    public int saveDate(Student h){
-        String sql = "INSERT INTO HostelData(birthday) VALUES ('"+ h.getLocalDateTime() + "');";
-        return template.update(sql);
-    }
-
     public int update(Student h) {
         String sql = "UPDATE HostelData SET FirstName = '"+h.getFirstName()+"', SecondName= '"+h.getSecondName()+"', RoomNumber= '"+h.getRoomNumber()+"', Faculty= '"+h.getFaculty()+"', Birthday= '"+h.getBirthday()+"' WHERE id='"+h.getId()+"'";
         return template.update(sql);
