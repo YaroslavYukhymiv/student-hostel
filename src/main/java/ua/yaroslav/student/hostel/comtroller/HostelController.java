@@ -47,7 +47,7 @@ public class HostelController {
         return "edit";
     }
 
-    @RequestMapping("/editsave")
+    @RequestMapping(value = "/editsave", method = RequestMethod.POST)
     public String editsave(@ModelAttribute("hos") Student student){
         dao.update(student);
         return "redirect:/view";

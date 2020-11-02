@@ -13,31 +13,31 @@
 </head>
 
 <body style="background-image: url('${img}');">
-<div class="container mt-5" >
+<div class="container mt-5">
     <div class="row align-items-center mt-5">
         <div class="col"></div>
         <div class="col-5 mt-5">
-            <form:form method="post" action="/editsave">
+
+            <form:form method="POST" action="/editsave">
                 <form class="form-signin">
 
-                    <h1 class="h3 mb-3 font-weight-normal text-center">Add new student</h1>
-                        <%--    <label for="inputEmail" class="sr-only">Email address</label>--%>
+                    <h1 class="h3 mb-3 font-weight-normal text-center">Edit student</h1>
+                    <form:hidden  path="id"/>    <!--question-->
                     <form:input type="text" id="inputEmail" class="form-control text-white bg-dark" placeholder="FirstName" required="" autofocus="" path="firstName"/>
-                        <%--    <label for="inputPassword" class="sr-only">Password</label>--%>
                     <form:input type="text" id="inputPassword" class="form-control mt-3 text-white bg-dark" placeholder="Second name" required="" path="secondName"/>
                     <form:input type="text" id="inputPassword" class="form-control mt-3 text-white bg-dark" placeholder="RoomNumber" required="" path="roomNumber"/>
                     <form:input type="text" id="inputPassword" class="form-control mt-3 text-white bg-dark" placeholder="Faculty" required="" path="faculty"/>
                     <form:input type="text" id="inputPassword" class="form-control mt-3 text-white bg-dark" placeholder="Birthday" required="" path="birthday"/>
 
-                    <button class="btn btn-lg btn-primary btn-block mt-3 bg-light text-dark" type="submit">Save</button>
+                    <button class="btn btn-lg btn-primary btn-block mt-3 bg-light text-dark" type="submit">Edit</button>
 
                 </form>
             </form:form>
         </div>
+
         <div class="col"></div>
     </div>
 </div>
 
 </body>
 </html>
-
