@@ -41,5 +41,6 @@
     </c:forEach>
     </tbody>
 </table>
+<a href="/form" class="btn btn-dark btn-lg active" style="margin-left: 89%" role="button" aria-pressed="true">Add new student</a>
 </body>
 </html>
