@@ -36,10 +36,8 @@ public class HostelDao {
         return template.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<Student>(Student.class));
     }
     public List<Student> getStudents() {
+        return template.query("SELECT * FROM HostelData", (ResultSet resultSet, int i) -> {
 
-        return template.query("SELECT * FROM HostelData", new RowMapper<Student>() {
-            @Override
-            public Student mapRow(ResultSet resultSet, int i) throws SQLException {
                 Student student = new Student();
                 student.setId(resultSet.getInt(1));
                 student.setFirstName(resultSet.getString(2));
@@ -48,7 +46,6 @@ public class HostelDao {
                 student.setFaculty(resultSet.getString(5));
                 student.setBirthday(resultSet.getString(6));
                 return student;
-            }
-        });
+            });
     }
 }
