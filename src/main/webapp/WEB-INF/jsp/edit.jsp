@@ -18,7 +18,7 @@
         <div class="col"></div>
         <div class="col-5 mt-5">
 
-            <form:form method="POST" action="/editsave">
+            <form:form method="post" action="editsave">
                 <form class="form-signin">
 
                     <h1 class="h3 mb-3 font-weight-normal text-center">Edit student</h1>

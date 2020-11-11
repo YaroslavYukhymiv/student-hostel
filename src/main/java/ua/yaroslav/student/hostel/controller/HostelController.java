@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ua.yaroslav.student.hostel.dao.entity.Student;
-import ua.yaroslav.student.hostel.dao.HostelDao;
+import ua.yaroslav.student.hostel.dao.entity.Hostel;
+import ua.yaroslav.student.hostel.dao.services.HostelService;
 
 import java.util.List;
 
@@ -16,46 +15,23 @@ import java.util.List;
 public class HostelController {
 
     @Autowired
-    HostelDao dao;
+    HostelService service;
 
-    @RequestMapping("/form")
-    public String showForm(Model m){
-        m.addAttribute("command", new Student());
-        return "form";
+    @RequestMapping("/hostels")
+    public String showHostels(Model model){
+        List<Hostel> hostelList = service.hostelList();
+        model.addAttribute("hostels", hostelList);
+        return "hostels";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute("hos") Student student){
-        if(student.getBirthday().equals("")){
-            student.setBirthday("null");
-        }
-        dao.save(student);
-        return "redirect:view";
+    @RequestMapping(value = "/save_hostel", method = RequestMethod.POST)
+    public String save(@ModelAttribute Hostel hostel){
+        service.saveHostel(hostel);
+        return "redirect:hostels";
     }
-
-    @RequestMapping("view")
-    public String veiw(Model m){
-        List<Student> list = dao.getStudents();
-        m.addAttribute("list", list);
-        return "view";
-    }
-
-    @RequestMapping("/edit/{id}")
-    public String edit(@PathVariable int id,Model m){
-        Student student = dao.getHostelById(id);
-        m.addAttribute("command", student);
-        return "edit";
-    }
-
-    @RequestMapping(value = "/editsave", method = RequestMethod.POST)
-    public String editsave(@ModelAttribute("hos") Student student){
-        dao.update(student);
-        return "redirect:/view";
-    }
-
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable int id){
-        dao.delete(id);
-        return "redirect:/view";
+    @RequestMapping("/new_hostel")
+    public String newHostel(Model model){
+        model.addAttribute("command", new Hostel());
+        return "/hostel_form";
     }
 }

@@ -18,7 +18,7 @@
         <div class="col"></div>
         <div class="col-5 mt-5">
 
-            <form:form method="post" action="save">
+            <form:form method="post" action="/save">
             <form class="form-signin">
 
             <h1 class="h3 mb-3 font-weight-normal text-center">Add new student</h1>

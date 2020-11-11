@@ -21,6 +21,11 @@ public class HostelDao {
     public int save(Student h) {
         String sql = "INSERT INTO HostelData(firstName, secondName, roomNumber, faculty, birthday) " +
                 "VALUES ('"+h.getFirstName()+"', '"+h.getSecondName()+"', '"+h.getRoomNumber()+"', '"+h.getFaculty()+"', '"+h.getBirthday()+"')";
+//        String sqlTwo = "INSERT INTO HostelData(firstName, secondName, roomNumber, faculty) " +
+//                "VALUES ('"+h.getFirstName()+"', '"+h.getSecondName()+"', '"+h.getRoomNumber()+"', '"+h.getFaculty()+"')";
+//        if(h.getBirthday() == null){
+//            return template.update(sqlTwo);
+//        }
         return template.update(sql);
     }
     public int update(Student h) {
@@ -28,7 +33,7 @@ public class HostelDao {
         return template.update(sql);
     }
     public int delete(int id){
-        String sql = "DELETE FROM HostelData WHERE id="+id+"";
+        String sql = "DELETE FROM HostelData WHERE id="+ id +"";
         return template.update(sql);
     }
     public Student getHostelById(int id){

@@ -1,6 +1,14 @@
 package ua.yaroslav.student.hostel.dao.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Student {
+
+    @Id
+    @GeneratedValue
     private int id;
     private String firstName;
     private String secondName;
