@@ -11,4 +11,5 @@ public interface HostelRepository extends CrudRepository<Hostel, Long> {
 
     Hostel findByName(String name);
 
+
 }

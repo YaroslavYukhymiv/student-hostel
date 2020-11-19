@@ -1,5 +1,7 @@
 package ua.yaroslav.student.hostel.dao.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +16,7 @@ public class Student {
     private String secondName;
     private int roomNumber;
     private String faculty;
+
     private String birthday;
 
     public int getId() {
