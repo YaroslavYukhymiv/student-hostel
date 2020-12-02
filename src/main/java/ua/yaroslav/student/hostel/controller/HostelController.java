@@ -21,7 +21,7 @@ public class HostelController {
     public String showHostels(Model model){
         List<Hostel> hostelList = service.hostelList();
         model.addAttribute("hostels", hostelList);
-        return "hostels";
+        return "hostels/hostels";
     }
 
     @RequestMapping(value = "/save_hostel", method = RequestMethod.POST)

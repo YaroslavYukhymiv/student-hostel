@@ -3,10 +3,13 @@ package ua.yaroslav.student.hostel.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.yaroslav.student.hostel.dao.entity.Student;
 import ua.yaroslav.student.hostel.controller.models.StudentBirthdayBetween;
+import ua.yaroslav.student.hostel.dao.entity.User;
 import ua.yaroslav.student.hostel.dao.services.StudentService;
+import ua.yaroslav.student.hostel.dao.services.UserService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +26,8 @@ public class StudentController {
 
     @Autowired
     StudentService studentService;
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value = "/search", method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
     public String search(Model model, Student student){
@@ -65,10 +70,7 @@ public class StudentController {
         return "redirect:students/students";
     }
 
-    @RequestMapping("/login")
-    public String login(Model m){
-        return "students/login";
-    }
+
 
     @RequestMapping("/students")
     public String veiw(Model m){

@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <!doctype html>
 <html lang="en">
@@ -21,7 +23,9 @@
         <th scope="col">Last name</th>
         <th scope="col">Room Number</th>
         <th scope="col">Faculty</th>
+        <sec:authorize access="hasRole('ADMIN')">
         <th scope="col">Birthday</th>
+        </sec:authorize>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
     </tr>
@@ -35,7 +39,9 @@
                 <td>${hoss.secondName}</td>
                 <td>${hoss.roomNumber}</td>
                 <td>${hoss.faculty}</td>
+                <sec:authorize access="hasRole('ADMIN')">
                 <td>${hoss.birthday}</td>
+                </sec:authorize>
                 <td><a href="edit?id=${hoss.id}">Edit</a></td>
                 <td><a href="delete/${hoss.id}">Delete</a></td>
             </tr>
@@ -52,8 +58,12 @@
         <td><form:input path="faculty"/></td>
         <td><form:input path=""/></td>
         <td><button type="submit">Find</button></td>
+
     </tr>
 </form:form>
+<a href="/logout">
+    <button class="btn btn-lg btn-primary btn-block mt-3 bg-light text-dark" style="margin-left: 50%; width: 185px" type="submit">Log out</button>
+</a>
 
 <a href="/"></a>
 
@@ -66,6 +76,7 @@
     </form:form>
 </div>
 
+<sec:authorize access="hasRole('ADMIN')">
 <div>
     <form:form method="post" action="/search_birthday" modelAttribute="studentsBirthday">
         <form:input type="text" id="inputPassword" class="form-control mt-3 text-white bg-dark" style="margin-left: 89%; width: 185px" placeholder="Birthday from" required="" path="birthdayOne"/>
@@ -74,7 +85,7 @@
         <button class="btn btn-lg btn-primary btn-block mt-3 bg-light text-dark" style="margin-left: 89%; width: 185px" type="submit">Find by birthday</button>
     </form:form>
 </div>
-
+</sec:authorize>
 
 </body>
 </html>

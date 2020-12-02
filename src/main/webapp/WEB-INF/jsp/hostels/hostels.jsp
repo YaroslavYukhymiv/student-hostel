@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <!doctype html>
 <html lang="en">
@@ -29,7 +31,11 @@
             <td>${hoss.id}</td>
             <td>${hoss.name}</td>
             <td>${hoss.rooms}</td>
+
+            <sec:authorize access="hasAnyRole('ADMIN', 'SUPERADMIN', 'PASSWORD')">
             <td><a href="/students">Show students</a></td>
+            </sec:authorize>
+
         </tr>
     </c:forEach>
     </tbody>
