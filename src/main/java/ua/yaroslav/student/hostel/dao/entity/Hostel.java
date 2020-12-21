@@ -43,4 +43,12 @@ public class Hostel {
         this.rooms = rooms;
     }
 
+    @Override
+    public String toString() {
+        return "Hostel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", rooms=" + rooms +
+                '}';
+    }
 }

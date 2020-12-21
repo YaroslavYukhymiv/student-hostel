@@ -65,4 +65,15 @@ public class Student {
 
     public void setBirthday(String birthday) { this.birthday = birthday; }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", roomNumber=" + roomNumber +
+                ", faculty='" + faculty + '\'' +
+                ", birthday='" + birthday + '\'' +
+                '}';
+    }
 }

@@ -39,8 +39,13 @@ public class LoginLogoutController {
         return "login";
     }
 
-    @RequestMapping("/logout")
+    @RequestMapping(value = "/logout")
     public String logout(Model m){
         return "login";
+    }
+
+    @RequestMapping("/403")
+    public String error(Model model) {
+        return "403";
     }
 }

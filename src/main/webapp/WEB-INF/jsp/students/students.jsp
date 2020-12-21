@@ -61,11 +61,18 @@
 
     </tr>
 </form:form>
-<a href="/logout">
+
+<%--<form:form action="/logout" method="post">--%>
+<%--    --%>
+<%--    <input type="submit" value="Sign Out">--%>
+<%--</form:form>--%>
+
+<%--<form:form action="/logout" method="post">--%>
+<a href="<c:url value="/logout"/>">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <button class="btn btn-lg btn-primary btn-block mt-3 bg-light text-dark" style="margin-left: 50%; width: 185px" type="submit">Log out</button>
 </a>
-
-<a href="/"></a>
+<%--</form:form>--%>
 
 <div>
     <form:form method="post" action="/search" modelAttribute="command">

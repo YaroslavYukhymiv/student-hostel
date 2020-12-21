@@ -1,10 +1,13 @@
 package ua.yaroslav.student.hostel.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import ua.yaroslav.student.hostel.WebSecurityConfig;
 import ua.yaroslav.student.hostel.dao.entity.Student;
 import ua.yaroslav.student.hostel.controller.models.StudentBirthdayBetween;
 import ua.yaroslav.student.hostel.dao.entity.User;
@@ -21,6 +24,8 @@ import java.util.Optional;
 @Controller
 public class StudentController {
 
+    Logger logger =  LoggerFactory.getLogger(WebSecurityConfig.class);
+
 //    @Autowired
 //    HostelDao dao;
 
@@ -33,6 +38,7 @@ public class StudentController {
     public String search(Model model, Student student){
         List<Student> students = studentService.findByFirstNameAndAndFaculty(student.getFirstName(), student.getFaculty());
         model.addAttribute("listStudents", students);
+        logger.trace("Controller /search was executed");
         return "students/studentsFind";
     }
 
@@ -42,6 +48,7 @@ public class StudentController {
                 student.getRoomNumber(), student.getFaculty(), student.getBirthday()) ;
 //        List<Student> students = studentService.findByOr(student.getFirstName(), student.getSecondName());
         model.addAttribute("listStudents", students);
+        logger.trace("Controller /search_all was executed");
         return "students/studentsFind";
     }
 
@@ -52,12 +59,14 @@ public class StudentController {
         Date from2 = simpleDateFormat.parse(birthdayTwo);
         List<Student> students = studentService.findAllByBirthdayBetween(from, from2);
         model.addAttribute("listStudents", students);
+        logger.trace("Controller /search_birthday was executed");
         return "students/studentsFind";
     }
 
     @RequestMapping("/form")
     public String showForm(Model m){
         m.addAttribute("command", new Student());
+        logger.trace("Controller '/form' was executed");
         return "students/form";
     }
 
@@ -67,10 +76,9 @@ public class StudentController {
             student.setBirthday(null);
         }
         studentService.saveStudent(student);
+        logger.trace("Controller /save was executed");
         return "redirect:students/students";
     }
-
-
 
     @RequestMapping("/students")
     public String veiw(Model m){
@@ -79,6 +87,7 @@ public class StudentController {
         m.addAttribute("command", new Student());
         m.addAttribute("studentAll", new Student());
         m.addAttribute("studentsBirthday", new StudentBirthdayBetween());
+        logger.info("Controller /students was called");
         return "students/students";
     }
 
@@ -86,18 +95,21 @@ public class StudentController {
     public String edit(@RequestParam("id") int id,Model m){
         Optional<Student> student = studentService.getStudentById(id);
         m.addAttribute("command", student);
+        logger.trace("Controller /edit was executed");
         return "edit";
     }
 
     @RequestMapping(value = "/editsave", method = RequestMethod.POST)
     public String editsave(@ModelAttribute Student student){
         studentService.updateStudent(student);
+        logger.trace("Controller /editsave was executed");
         return "redirect:/students/students";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable int id){
         studentService.deleteStudentById(id);
+        logger.trace("Controller /selete/" + id + " was executed");
         return "redirect:/students/students";
     }
 }

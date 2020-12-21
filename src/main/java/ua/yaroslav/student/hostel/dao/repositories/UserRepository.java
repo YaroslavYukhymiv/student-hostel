@@ -7,5 +7,5 @@ import ua.yaroslav.student.hostel.dao.entity.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
 
     public User findByUsername(String name);
-    public User findByPassword(String password);
+    public String findByPassword(String password);
 }

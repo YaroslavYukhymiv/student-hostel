@@ -1,5 +1,7 @@
 package ua.yaroslav.student.hostel.dao.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.yaroslav.student.hostel.dao.entity.Student;
@@ -12,28 +14,36 @@ import java.util.Optional;
 @Service
 public class StudentService {
 
+    Logger logger = LoggerFactory.getLogger(StudentService.class);
+
     @Autowired
     private StudentRepository studentRepository;
 
 
     public List<Student> studentList(){
+        logger.debug("Was faund all students");
         return (List<Student>) studentRepository.findAll();
     }
 
     public Student saveStudent(Student student){
+        logger.debug("Student was saved: " + student);
         return studentRepository.save(student);
     }
     public Optional<Student> getStudentById(int id){
+        logger.debug("Student " + id + "was faund");
         return studentRepository.findById(id);
     }
     public void deleteStudentById(int id){
+        logger.debug("Student " + id + "was deleted");
         studentRepository.deleteById(id);
     }
     public Student updateStudent(Student student){
+        logger.debug("Student " + student + "was updated");
         return studentRepository.save(student);  // < -- question!
     }
 
     public List<Student> findByName(String name){
+        logger.debug("Student " + name + "was found");
         return studentRepository.findByFirstName(name);
     }
 
@@ -44,6 +54,7 @@ public class StudentService {
         {
             return studentRepository.findAllByFaculty(faculty);
         } else {
+            logger.debug("Was found students by firstName and faculty");
             return studentRepository.findByFirstNameAndAndFaculty(name, faculty);
         }
     }

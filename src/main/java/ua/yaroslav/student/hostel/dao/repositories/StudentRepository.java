@@ -3,7 +3,7 @@ package ua.yaroslav.student.hostel.dao.repositories;
 import org.springframework.data.repository.CrudRepository;
 import ua.yaroslav.student.hostel.dao.entity.Student;
 
-import javax.xml.crypto.Data;
+
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +18,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     // <--------!!!!!!!!!!!!
 
     List<Student> findAllByBirthdayBetween(Date birthdayOne, Date birthdayTwo);
+    List<Student> findByRoomNumber(int room);
 
     // <--------!!!!!!!!!!!!
 

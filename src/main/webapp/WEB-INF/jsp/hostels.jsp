@@ -5,7 +5,8 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
     <title>List of students</title>
 </head>
@@ -35,7 +36,8 @@
     </tbody>
 </table>
 
-<a href="/new_hostel" class="btn btn-dark btn-lg active" style="margin-left: 89%" role="button" aria-pressed="true">Add new hostel</a>
+<a href="/new_hostel" class="btn btn-dark btn-lg active" style="margin-left: 89%" role="button" aria-pressed="true">Add
+    new hostel</a>
 
 </body>
 </html>

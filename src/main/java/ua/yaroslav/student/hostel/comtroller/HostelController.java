@@ -19,14 +19,14 @@ public class HostelController {
     HostelDao dao;
 
     @RequestMapping("/form")
-    public String showForm(Model m){
+    public String showForm(Model m) {
         m.addAttribute("command", new Student());
         return "form";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute("hos") Student student){
-        if(student.getBirthday().equals("")){
+    public String save(@ModelAttribute("hos") Student student) {
+        if (student.getBirthday().equals("")) {
             student.setBirthday("null");
         }
         dao.save(student);
@@ -34,27 +34,27 @@ public class HostelController {
     }
 
     @RequestMapping("view")
-    public String veiw(Model m){
+    public String veiw(Model m) {
         List<Student> list = dao.getStudents();
         m.addAttribute("list", list);
         return "view";
     }
 
     @RequestMapping("/edit/{id}")
-    public String edit(@PathVariable int id,Model m){
+    public String edit(@PathVariable int id, Model m) {
         Student student = dao.getHostelById(id);
         m.addAttribute("command", student);
         return "edit";
     }
 
     @RequestMapping(value = "/editsave", method = RequestMethod.POST)
-    public String editsave(@ModelAttribute("hos") Student student){
+    public String editsave(@ModelAttribute("hos") Student student) {
         dao.update(student);
         return "redirect:/view";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable int id){
+    public String delete(@PathVariable int id) {
         dao.delete(id);
         return "redirect:/view";
     }
