@@ -7,8 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ua.yaroslav.student.hostel.dao.entity.User;
-import ua.yaroslav.student.hostel.dao.services.UserService;
+import ua.yaroslav.student.hostel.entity.User;
+import ua.yaroslav.student.hostel.services.UserService;
 
 @Controller
 public class LoginLogoutController {

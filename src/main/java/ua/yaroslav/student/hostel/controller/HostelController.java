@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ua.yaroslav.student.hostel.dao.entity.Hostel;
-import ua.yaroslav.student.hostel.dao.services.HostelService;
+import ua.yaroslav.student.hostel.entity.Hostel;
+import ua.yaroslav.student.hostel.services.HostelService;
 
 import java.util.List;
 
